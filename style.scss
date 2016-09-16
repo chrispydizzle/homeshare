@@ -1,0 +1,223 @@
+@import 'compass/css3';
+@import 'compass/css3/transform';
+
+$blk: #000;
+$wht: #fff;
+$c-green: #24898f;
+$c-purple: #9e1b81;
+$c-red: #f5392c;
+$c-lime: #33a341;
+$c-size: 5vw;
+
+body {
+	background: $blk;
+	height: 100vh;
+	overflow: hidden;
+	width: 100vw;
+}
+
+main {
+	height: 100vh;
+	position: absolute;
+	text-align: center;
+	width: 100vw;
+}
+
+figure {
+	@include animation(rotation 5s ease-in-out infinite alternate-reverse);
+	@include inline-block;
+	@include transform(rotateX(0deg) rotateY(0deg));
+	@include transform-style(preserve-3d);
+	height: 10vw;
+	margin: 0 8vw;
+	width: 10vw;
+
+	div {
+		height: 68%;
+		padding-top: 32%;
+		position: absolute;
+		width: 100%
+	}
+}
+
+section {
+	@include transform(translateY(-50%));
+	position: relative;
+	top: 50%;
+	width: 100vw;
+	@include transition(top 1s ease-in)
+}
+
+.logo {
+	@include animation(glow 4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate-reverse);
+	background-image: url('cpsharp.png');
+	background-size: contain;
+	cursor: pointer;
+	height: 150px;
+	left: 2vw;
+	position: absolute;
+	top: 2vw;
+	width: 150px;
+}
+
+.glitz {
+	background: url('narcos.jpg') no-repeat;
+	background-size: contain;
+	height: 65vh;
+	position: absolute;
+	width: 30vw;
+	right: 2vw;
+	@include transition(all 2s cubic-bezier(0.13, 1.14, 0.32, 1.36));
+	@include opacity(.5)
+
+}
+
+.glitz_hide {
+	right: -1000px;
+}
+
+.front {
+	@include translate3d(0, 0, $c-size);
+	background: $c-green;
+}
+
+.left {
+	@include transform(rotateY(-90deg) translate3d(0, 0, $c-size));
+	background: $c-purple;
+}
+
+.right {
+	@include transform(rotateY(90deg) translate3d(0, 0, $c-size));
+	background: $c-red;
+}
+
+.bottom {
+	@include transform(rotateX(-90deg) translate3d(0, 0, $c-size));
+	background: $c-lime;
+}
+.list_container{
+	@include opacity(0);
+	@include transition(all 1s ease-in-out);
+	top: -1000px;
+	position: absolute;
+	width: 100vw;
+	z-index: 100;
+}
+
+.be_seen{
+	top: 0px;
+	@include opacity(1);
+}
+
+$row-color: rgba(66, 66, 66, 0.75);
+
+html,body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	color: $wht;
+	font: 2vw 'Open Sans', sans-serif;
+	text-align: right;
+}
+
+.rolldown-list {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+
+	li {
+		display: block;
+		font-size: 2vh;
+		letter-spacing: .4vw;
+		list-style: none;
+		margin-bottom: .125em;
+		padding: 1em;
+		border-radius: .5em;
+
+		a {
+			@include animation(glow 4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate-reverse);
+			&:hover{
+				font-weight:bold;
+			}
+
+			color: $c-lime;
+			font-weight: normal;
+			text-decoration: none;
+		}
+	}
+}
+
+.css-animations .rolldown-list li {
+	@include animation(rolldown .7s 1);
+	@include transform-origin(50%, 0);
+	@include animation-fill-mode(forwards);
+
+	visibility: hidden;
+}
+
+.rolldown-list li:nth-child(2n) {
+	background-color: lighten($row-color, 10%);
+
+}
+.rolldown-list li:nth-child(2n+1) {
+	background-color: $row-color;
+}
+
+#myList {
+	left: 50%;
+	margin-left: -25%;
+	position: absolute;
+	width: 50%;
+}
+
+#btnReload {
+	background: #ccc;
+	border: none;
+	color: #333;
+	float: right;
+	padding: .5em 1em;
+	text-transform: uppercase;
+}
+
+#btnReload:hover {
+	background: #ddd;
+}
+
+@include keyframes(rolldown) {
+	0% {
+		@include transform(rotateX(180deg) perspective(500px));
+		visibility: visible;
+	}
+
+	70% {
+		@include transform(rotateX(-20deg));
+		visibility: visible;
+	}
+
+	100% {
+		@include transform(rotateX(0deg));
+		visibility: visible;
+	}
+}
+
+@include keyframes(rotation) {
+	0%, 10% {
+		@include transform(rotateX(0deg) rotateY(0deg))
+	}
+
+	98%, 100% {
+		@include transform(rotateX(180deg) rotateY(180deg))
+	}
+}
+
+@include keyframes(glow) {
+	0% {
+		@include opacity(.5)
+	}
+
+	75%, 100% {
+		@include opacity(1)
+	}
+}

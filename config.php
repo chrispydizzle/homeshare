@@ -2,4 +2,5 @@
 
 const VID_PATHS = [
     'NS1',
-    'NS2'];
+    'NS2',
+	'Movies'];

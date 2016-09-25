@@ -3,22 +3,31 @@ $(document).ready(function () {
 		window.location = "http://www.cpsharp.net";
 	});
 
-	setTimeout("$('.glitz').removeClass('glitz_hide');", 500);
+	$('.downloadnot').click(function(trigger_button)
+	{
+		var file_path = trigger_button.target.attributes['file'].value;
+//		$.post('fs.php', { filename: file_path});
+
+	});
+
+	// setTimeout("$('.glitz').removeClass('glitz_hide');", 500);
 	var blocks = [];
 	var cube_container = $('section');
-	blocks["S1"] = new menu("S1");
-	blocks["S2"] = new menu("S2");
+	blocks["S1"] = new BlockMenu("S1");
+	blocks["S2"] = new BlockMenu("S2");
+	blocks["Movies"] = new BlockMenu("Movies");
 
-	function hide_all_blocks(){
-		for(var e in blocks){
+	function hide_all_blocks() {
+		for (var e in blocks) {
 			blocks[e].should_hide = true;
 			blocks[e].hide_me();
-		};
+		}
+
 		cube_container.css('top', '50%');
 	}
 
-	function menu(block) {
-		this.ident = "#" + block;
+	function BlockMenu($block) {
+		this.ident = "#" + $block;
 		this.should_hide = false;
 		this.domobject = $(this.ident);
 
@@ -30,12 +39,12 @@ $(document).ready(function () {
 			}
 		};
 
-
 		this.show_me = function () {
 			var list_id = this.ident + "_list";
 			hide_all_blocks();
 			cube_container.css('top', '80%');
 			$(list_id).addClass('be_seen');
+
 			this.should_hide = false;
 		};
 
@@ -44,5 +53,4 @@ $(document).ready(function () {
 		}, function () {
 			blocks[this.parentElement.id].hide_me();
 		});
-	}
-});
+	}});

@@ -8,13 +8,7 @@ $c-purple: #9e1b81;
 $c-red: #f5392c;
 $c-lime: #33a341;
 $c-size: 5vw;
-
-body {
-	background: $blk;
-	height: 100vh;
-	overflow: hidden;
-	width: 100vw;
-}
+$cp-yellow: #d69100;
 
 main {
 	height: 100vh;
@@ -36,20 +30,20 @@ figure {
 		height: 68%;
 		padding-top: 32%;
 		position: absolute;
-		width: 100%
+		width: 100%;
 	}
 }
 
 section {
 	@include transform(translateY(-50%));
+	@include transition(top 1s ease-in);
 	position: relative;
 	top: 50%;
 	width: 100vw;
-	@include transition(top 1s ease-in)
 }
 
 .logo {
-	@include animation(glow 4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate-reverse);
+	@include animation(glow 4s cubic-bezier(.45, .05, .55, .95) infinite alternate-reverse);
 	background-image: url('cpsharp.png');
 	background-size: contain;
 	cursor: pointer;
@@ -60,19 +54,55 @@ section {
 	width: 150px;
 }
 
-.glitz {
-	background: url('narcos.jpg') no-repeat;
+.film-reel {
+	@include animation(rollfilm 20s infinite);
+	background: url('filmreel.gif') no-repeat;
 	background-size: contain;
-	height: 65vh;
+	height: 18.5vh;
 	position: absolute;
-	width: 30vw;
-	right: 2vw;
-	@include transition(all 2s cubic-bezier(0.13, 1.14, 0.32, 1.36));
-	@include opacity(.5)
+	top: 50vh;
+	width: 100%;
 
 }
 
-.glitz_hide {
+.download {
+	content: 'Download';
+	cursor: hand;
+	font-weight: bold;
+	height: 3vh;
+	letter-spacing: .2vw;
+	line-height: 2vh;
+	margin-left: 8vh;
+	width: 150px;
+
+	&:hover {
+		background: $cp_yellow;
+		border-color: $cp_yellow;
+		color: $wht;
+	}
+}
+
+.narco {
+	background: url('narcos.jpg') no-repeat;
+}
+
+.in_time {
+	background: url('intime.jpg') no-repeat;
+}
+
+.glitz {
+	@include transition(all 2s cubic-bezier(.13, 1.14, .32, 1.36));
+	@include opacity(.5);
+
+	background-repeat: no-repeat;
+	background-size: contain;
+	height: 65vh;
+	position: absolute;
+	right: 2vw;
+	width: 30vw;
+}
+
+.glitz-hide {
 	right: -1000px;
 }
 
@@ -95,94 +125,77 @@ section {
 	@include transform(rotateX(-90deg) translate3d(0, 0, $c-size));
 	background: $c-lime;
 }
-.list_container{
+
+.list_container {
 	@include opacity(0);
 	@include transition(all 1s ease-in-out);
-	top: -1000px;
+
 	position: absolute;
+	top: -1000px;
 	width: 100vw;
 	z-index: 100;
 }
 
-.be_seen{
-	top: 0px;
+.be_seen {
 	@include opacity(1);
+
+	top: 0;
 }
 
-$row-color: rgba(66, 66, 66, 0.75);
+$row-color: rgba(66, 66, 66, .75);
 
-html,body {
+html {
 	height: 100%;
 	width: 100%;
 }
 
 body {
+	background: $blk;
 	color: $wht;
 	font: 2vw 'Open Sans', sans-serif;
+	height: 100vh;
+	overflow: hidden;
 	text-align: right;
 }
 
 .rolldown-list {
-	margin: 0;
+	left: 50%;
+	margin: 0 0 0 -25%;
 	padding: 0;
+	position: absolute;
 	text-align: center;
+	width: 50%;
 
 	li {
+		@include border-radius(.5em);
 		display: block;
 		font-size: 2vh;
 		letter-spacing: .4vw;
 		list-style: none;
 		margin-bottom: .125em;
 		padding: 1em;
-		border-radius: .5em;
+
+		&:nth-child(2n) {
+			background-color: lighten($row-color, 10%);
+
+		}
+
+		&:nth-child(2n+1) {
+			background-color: $row-color;
+		}
 
 		a {
-			@include animation(glow 4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate-reverse);
-			&:hover{
-				font-weight:bold;
-			}
+			@include animation(glow 4s cubic-bezier(.45, .05, .55, .95) infinite alternate-reverse);
 
 			color: $c-lime;
 			font-weight: normal;
 			text-decoration: none;
+
+			&:hover {
+				font-weight: bold;
+			}
 		}
 	}
-}
-
-.css-animations .rolldown-list li {
-	@include animation(rolldown .7s 1);
-	@include transform-origin(50%, 0);
-	@include animation-fill-mode(forwards);
-
-	visibility: hidden;
-}
-
-.rolldown-list li:nth-child(2n) {
-	background-color: lighten($row-color, 10%);
-
-}
-.rolldown-list li:nth-child(2n+1) {
-	background-color: $row-color;
-}
-
-#myList {
-	left: 50%;
-	margin-left: -25%;
-	position: absolute;
-	width: 50%;
-}
-
-#btnReload {
-	background: #ccc;
-	border: none;
-	color: #333;
-	float: right;
-	padding: .5em 1em;
-	text-transform: uppercase;
-}
-
-#btnReload:hover {
-	background: #ddd;
 }
 
 @include keyframes(rolldown) {
@@ -219,5 +232,15 @@ body {
 
 	75%, 100% {
 		@include opacity(1)
+	}
+}
+
+@include keyframes(rollfilm) {
+	0% {
+		@include translateX(-100vw)
+	}
+
+	50% {
+		@include translateX(100vw)
 	}
 }

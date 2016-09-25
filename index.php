@@ -3,20 +3,29 @@ require_once __DIR__ . '/fs.php';
 $vid_data = create_meta();
 $files1   = $vid_data->collection[0]->draw();
 $files2   = $vid_data->collection[1]->draw();
+$files3   = $vid_data->collection[2]->draw();
 echo '<html><head>
         <title>CP Sharp - File share</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="style.css"/>
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">				        
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<link rel="icon" href="http://i2.wp.com/www.cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=32%2C32" sizes="32x32" />
+		<link rel="icon" href="http://i2.wp.com/www.cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=192%2C192" sizes="192x192" />
+		<link rel="apple-touch-icon-precomposed" href="http://i2.wp.com/www.cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=180%2C180" />
+		<meta name="msapplication-TileImage" content="http://i2.wp.com/www.cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=270%2C270" />		
     </head>
     <body><main>
         <aside class="logo"></aside>
-        <aside class="glitz glitz_hide"></aside>';
+        <aside class="film-reel"></aside>
+        <aside class="glitz glitz-hide"></aside>';
 echo '<div class="list_container" id="S1_list">';
 echo $files1;
 echo '</div>';
 echo '<div class="list_container" id="S2_list">';
 echo $files2;
+echo '</div>';
+echo '<div class="list_container" id="Movies_list">';
+echo $files3;
 echo '</div>';
 echo '<section>
             <figure ID="S1">
@@ -32,11 +41,11 @@ echo '</div><figure ID="S2">
                 <div class="bottom">Season 2</div>
             </figure>';
 
-echo '<figure ID="S3">
-                <div class="front">More...</div>
-                <div class="right">More...</div>
-                <div class="left">More...</div>
-                <div class="bottom">More...</div>
+echo '<figure ID="Movies">
+                <div class="front">Movies</div>
+                <div class="right">Movies</div>
+                <div class="left">Movies</div>
+                <div class="bottom">Movies</div>
             </figure>
         </section>
     </main>

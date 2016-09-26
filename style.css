@@ -1,8 +1,7 @@
-main {
-  height: 100vh;
+.div_holster {
   position: absolute;
   text-align: center;
-  width: 100vw; }
+  width: 100%; }
 
 figure {
   -moz-animation: rotation 5s ease-in-out infinite alternate-reverse;
@@ -21,10 +20,10 @@ figure {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   height: 10vw;
-  margin: 0 8vw;
+  margin: 50%;
   width: 10vw; }
   figure div {
-    height: 68%;
+    height: 8%;
     padding-top: 32%;
     position: absolute;
     width: 100%; }
@@ -39,8 +38,8 @@ section {
   -webkit-transition: top 1s ease-in;
   transition: top 1s ease-in;
   position: relative;
-  top: 50%;
-  width: 100vw; }
+  height: inherit;
+  width: inherit; }
 
 .logo {
   -moz-animation: glow 4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate-reverse;
@@ -56,15 +55,43 @@ section {
   width: 150px; }
 
 .film-reel {
-  -moz-animation: rollfilm 20s infinite;
-  -webkit-animation: rollfilm 20s infinite;
-  animation: rollfilm 20s infinite;
-  background: url("filmreel.gif") no-repeat;
-  background-size: contain;
   height: 18.5vh;
   position: absolute;
   top: 50vh;
   width: 100%; }
+
+ul#myList {
+  background: transparent url("MoviesPics/right_reel.gif") repeat-x;
+  overflow: hidden;
+  height: inherit;
+  background-size: auto 18.5vh;
+  width: auto;
+  margin: 0;
+  list-style: none;
+  background-position-x: 36px; }
+
+.rolldown-list li {
+  display: inline-block; }
+
+.rolldown-list {
+  left: 0;
+  margin: 0; }
+
+.rolldown-list li {
+  text-indent: 0;
+  padding: 0;
+  margin: 0 0 0 0;
+  height: inherit;
+  list-style: none;
+  font-size: 0;
+  letter-spacing: 7.4vw;
+  background: transparent; }
+
+ul .rolldown-list {
+  margin: 0 -27px 0 0; }
+
+ul {
+  -webkit-padding-start: 0; }
 
 .download {
   content: 'Download';
@@ -79,29 +106,6 @@ section {
     background: #d69100;
     border-color: #d69100;
     color: #fff; }
-
-.narco {
-  background: url("narcos.jpg") no-repeat; }
-
-.in_time {
-  background: url("intime.jpg") no-repeat; }
-
-.glitz {
-  -moz-transition: all 2s cubic-bezier(0.13, 1.14, 0.32, 1.36);
-  -o-transition: all 2s cubic-bezier(0.13, 1.14, 0.32, 1.36);
-  -webkit-transition: all 2s cubic-bezier(0.13, 1.14, 0.32, 1.36);
-  transition: all 2s cubic-bezier(0.13, 1.14, 0.32, 1.36);
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
-  opacity: 0.5;
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 65vh;
-  position: absolute;
-  right: 2vw;
-  width: 30vw; }
-
-.glitz-hide {
-  right: -1000px; }
 
 .front {
   -moz-transform: translate3d(0, 0, 5vw);
@@ -156,39 +160,10 @@ body {
   color: #fff;
   font: 2vw 'Open Sans', sans-serif;
   height: 100vh;
+  width: 100vw;
   overflow: hidden;
-  text-align: right; }
-
-.rolldown-list {
-  left: 50%;
-  margin: 0 0 0 -25%;
-  padding: 0;
-  position: absolute;
-  text-align: center;
-  width: 50%; }
-  .rolldown-list li {
-    -moz-border-radius: 0.5em;
-    -webkit-border-radius: 0.5em;
-    border-radius: 0.5em;
-    display: block;
-    font-size: 2vh;
-    letter-spacing: .4vw;
-    list-style: none;
-    margin-bottom: .125em;
-    padding: 1em; }
-    .rolldown-list li:nth-child(2n) {
-      background-color: rgba(92, 92, 92, 0.75); }
-    .rolldown-list li:nth-child(2n+1) {
-      background-color: rgba(66, 66, 66, 0.75); }
-    .rolldown-list li a {
-      -moz-animation: glow 4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate-reverse;
-      -webkit-animation: glow 4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate-reverse;
-      animation: glow 4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate-reverse;
-      color: #33a341;
-      font-weight: normal;
-      text-decoration: none; }
-      .rolldown-list li a:hover {
-        font-weight: bold; }
+  text-align: right;
+  margin: 0; }
 
 @-moz-keyframes rolldown {
   0% {
@@ -300,5 +275,54 @@ body {
     -ms-transform: translateX(100vw);
     -webkit-transform: translateX(100vw);
     transform: translateX(100vw); } }
+main {
+  height: 50%;
+  width: inherit; }
+
+main div {
+  width: 50%; }
+
+ul#myList {
+  background-position: bottom left;
+  border-left: gray solid 1px;
+  float: left;
+  height: 209px;
+  overflow-x: scroll; }
+
+.rolldown-list li {
+  margin-left: -2px;
+  padding-top: 0;
+  width: 189px; }
+
+.download {
+  width: 88%;
+  letter-spacing: 0;
+  margin: 0 4% 0 0;
+  border: 0; }
+
+.rolldown-list li {
+  float: left; }
+
+button.download {
+  /* margin: 0 0; */
+  text-align: center;
+  border-radius: 5px; }
+
+aside.film-reel {
+  height: 206px;
+  width: 100%;
+  margin: 0 0 0 0;
+  padding: 5%; }
+
+li {
+  margin-right: 5px; }
+
+main {
+  height: 100vh;
+  width: 100vw; }
+
+aside.film-reel {
+  top: 170px;
+  border-left: gray solid 1px; }
 
 /*# sourceMappingURL=style.css.map */

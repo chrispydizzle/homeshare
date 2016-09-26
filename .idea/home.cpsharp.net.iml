@@ -28,5 +28,16 @@
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="module-library">
+      <library name="PHP" type="php">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../dev.susansolovic.com" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../dev.susansolovic.com" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

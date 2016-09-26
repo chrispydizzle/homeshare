@@ -10,11 +10,10 @@ $c-lime: #33a341;
 $c-size: 5vw;
 $cp-yellow: #d69100;
 
-main {
-	height: 100vh;
+.div_holster {
 	position: absolute;
 	text-align: center;
-	width: 100vw;
+	width: 100%;
 }
 
 figure {
@@ -23,11 +22,11 @@ figure {
 	@include transform(rotateX(0deg) rotateY(0deg));
 	@include transform-style(preserve-3d);
 	height: 10vw;
-	margin: 0 8vw;
+	margin: 50%;
 	width: 10vw;
 
 	div {
-		height: 68%;
+		height: 8%;
 		padding-top: 32%;
 		position: absolute;
 		width: 100%;
@@ -38,8 +37,8 @@ section {
 	@include transform(translateY(-50%));
 	@include transition(top 1s ease-in);
 	position: relative;
-	top: 50%;
-	width: 100vw;
+	height: inherit;
+	width: inherit;
 }
 
 .logo {
@@ -55,14 +54,53 @@ section {
 }
 
 .film-reel {
-	@include animation(rollfilm 20s infinite);
-	background: url('filmreel.gif') no-repeat;
-	background-size: contain;
+	// @include animation(rollfilm 20s infinite);
+	// background: url('filmreel.gif') no-repeat;
+	// background-size: contain;
 	height: 18.5vh;
 	position: absolute;
 	top: 50vh;
 	width: 100%;
 
+}
+
+ul#myList {
+	background: transparent url('MoviesPics/right_reel.gif') repeat-x;
+	overflow: hidden;
+	height: inherit;
+	background-size: auto 18.5vh;
+	width: auto;
+	margin: 0;
+	list-style: none;
+	background-position-x: 36px;
+}
+
+.rolldown-list li {
+	display: inline-block;
+}
+
+.rolldown-list {
+	left: 0;
+	margin: 0;
+}
+
+.rolldown-list li {
+	text-indent: 0;
+	padding: 0;
+	margin: 0 0 0 0;
+	height: inherit;
+	list-style: none;
+	font-size: 0;
+	letter-spacing: 7.4vw;
+	background: transparent;
+}
+
+ul .rolldown-list {
+	margin: 0 -27px 0 0;
+}
+
+ul {
+	-webkit-padding-start: 0;
 }
 
 .download {
@@ -80,30 +118,6 @@ section {
 		border-color: $cp_yellow;
 		color: $wht;
 	}
-}
-
-.narco {
-	background: url('narcos.jpg') no-repeat;
-}
-
-.in_time {
-	background: url('intime.jpg') no-repeat;
-}
-
-.glitz {
-	@include transition(all 2s cubic-bezier(.13, 1.14, .32, 1.36));
-	@include opacity(.5);
-
-	background-repeat: no-repeat;
-	background-size: contain;
-	height: 65vh;
-	position: absolute;
-	right: 2vw;
-	width: 30vw;
-}
-
-.glitz-hide {
-	right: -1000px;
 }
 
 .front {
@@ -154,48 +168,10 @@ body {
 	color: $wht;
 	font: 2vw 'Open Sans', sans-serif;
 	height: 100vh;
+	width: 100vw;
 	overflow: hidden;
 	text-align: right;
-}
-
-.rolldown-list {
-	left: 50%;
-	margin: 0 0 0 -25%;
-	padding: 0;
-	position: absolute;
-	text-align: center;
-	width: 50%;
-
-	li {
-		@include border-radius(.5em);
-		display: block;
-		font-size: 2vh;
-		letter-spacing: .4vw;
-		list-style: none;
-		margin-bottom: .125em;
-		padding: 1em;
-
-		&:nth-child(2n) {
-			background-color: lighten($row-color, 10%);
-
-		}
-
-		&:nth-child(2n+1) {
-			background-color: $row-color;
-		}
-
-		a {
-			@include animation(glow 4s cubic-bezier(.45, .05, .55, .95) infinite alternate-reverse);
-
-			color: $c-lime;
-			font-weight: normal;
-			text-decoration: none;
-
-			&:hover {
-				font-weight: bold;
-			}
-		}
-	}
+	margin: 0;
 }
 
 @include keyframes(rolldown) {
@@ -243,4 +219,65 @@ body {
 	50% {
 		@include translateX(100vw)
 	}
+}
+
+main {
+	height: 50%;
+	width: inherit;
+}
+
+main div {
+	width: 50%;
+}
+
+ul#myList {
+	background-position: bottom left;
+	border-left: gray solid 1px;
+	float: left;
+	height: 209px;
+	overflow-x: scroll;
+}
+
+.rolldown-list li {
+	margin-left: -2px;
+	padding-top: 0;
+	width: 189px;
+}
+
+.download {
+	width: 88%;
+	letter-spacing: 0;
+	margin: 0 4% 0 0;
+	border: 0;
+}
+
+.rolldown-list li {
+	float: left;
+}
+
+button.download {
+	/* margin: 0 0; */
+	text-align: center;
+	border-radius: 5px;
+}
+
+aside.film-reel {
+	height: 206px;
+	width: 100%;
+	margin: 0 0 0 0;
+	padding: 5%;
+}
+
+li {
+	margin-right: 5px;
+}
+
+main {
+	height: 100vh;
+	width: 100vw;
+}
+
+aside.film-reel {
+	top: 170px;
+	border-left: gray solid 1px;
 }

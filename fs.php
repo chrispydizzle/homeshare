@@ -1,12 +1,6 @@
 <?php
 require_once __DIR__ . '/config.php';
 
-$download_file_path = $_POST['filename'];
-
-if($download_file_path !== null){
-	force_download($download_file_path);
-}
-
 function create_meta() {
 	$vid_list = new VideoCollection();
 
@@ -26,15 +20,16 @@ function create_meta() {
 }
 
 function force_download( $filename ) {
-	header('Content-Type: application/octet-stream');
-	header('Content-Transfer-Encoding: Binary' );
-	header('Content-disposition: attachment; filename="' . basename($filename) . '"');
-	readfile($filename);
+	header( 'Content-Type: application/octet-stream' );
+	header( 'Content-Transfer-Encoding: Binary' );
+	header( 'Content-disposition: attachment; filename="' . basename( $filename ) . '"' );
+	readfile( $filename );
 }
 
 class VideoList {
 	private $root_path;
 	private $file_list;
+	private $imagery = [];
 
 	public function __construct( $root_path ) {
 		$this->root_path = $root_path;
@@ -47,19 +42,30 @@ class VideoList {
 
 	public function draw() {
 		$list = '<ul class="rolldown-list" id="myList">';
+
+		foreach ( $this->file_list as $f_name ) {
+			$list .= '<li>';
+			$file_path       = $this->root_path . '/' . $f_name;
+			$friendly_name   = $this->get_friendly_name( $f_name );
+			$this->imagery[] = str_replace( '.', ' ', $friendly_name . '.jpg' );
+			$list .= '<a href="' . $file_path . '" download><button class="download">' . $friendly_name . '</button></a>';
+			$list .= '</li >';
+		}
+		$list .= '</ul >';
+
+		return $list;
+	}
+
+	public function draw_old() {
+		$list = '<ul class="rolldown-list" id="myList">';
+
 		foreach ( $this->file_list as $file_name ) {
 			$list .= '<li>';
-			$file_path = $this->root_path . '/' . $file_name;
-			if ( strpos( $file_name, 'mp4' ) !== false ) {
-				$list .= 'Stream: ';
-			}
-
-			$list .= '<a href = "' . $file_path . '" > ' . $this->get_friendly_name( $file_name ) . '</a > ';
-
-			if ( strpos( $file_name, 'mp4' ) !== false ) {
-				$list .= '<a href="'.$file_path.' download>'.'<button class="download">Save</button></a>';
-			}
-
+			$file_path       = $this->root_path . '/' . $file_name;
+			$friendly_name   = $this->get_friendly_name( $file_name );
+			$this->imagery[] = str_replace( '.', ' ', $friendly_name . '.jpg' );
+			$list .= $friendly_name;
+			$list .= '<a href="' . $file_path . '" download>' . '<button class="download">Save</button></a>';
 			$list .= '</li >';
 		}
 		$list .= '</ul >';
@@ -68,17 +74,16 @@ class VideoList {
 	}
 
 	private function get_friendly_name( $name ) {
-		if ( strpos( $name, 'mkv' ) !== false ) {
-			$season  = substr( $name, 1, 2 );
-			$episode = substr( $name, 4, 2 );
 
-			return 'Season ' . $season . ' Episode ' . $episode;
-		} else {
-			$extension = strpos( $name, '.mp4' );
+		$name = str_replace( 'mkv', '', $name );
+		$name = str_replace( '.', ' ', $name );
+		$name = str_replace( 'mp4', ' ', $name );
 
-			return substr( $name, 0, $extension );
-		}
+		return $name;
+	}
 
+	public function getImagery() {
+		return $this->imagery;
 	}
 }
 

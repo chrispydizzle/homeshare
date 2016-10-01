@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData">
+  <component name="PublishConfigData" serverName="home.cpsharp.net">
     <serverData>
-      <paths name="blakjak.home">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
-            <mapping local="" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="ubu-stage">
+      <paths name="home.cpsharp.net">
         <serverdata>
           <mappings>
             <mapping deploy="/todo2" local="$PROJECT_DIR$" web="/" />

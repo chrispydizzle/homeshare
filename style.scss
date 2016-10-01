@@ -9,275 +9,229 @@ $c-red: #f5392c;
 $c-lime: #33a341;
 $c-size: 5vw;
 $cp-yellow: #d69100;
-
-.div_holster {
-	position: absolute;
-	text-align: center;
-	width: 100%;
-}
-
-figure {
-	@include animation(rotation 5s ease-in-out infinite alternate-reverse);
-	@include inline-block;
-	@include transform(rotateX(0deg) rotateY(0deg));
-	@include transform-style(preserve-3d);
-	height: 10vw;
-	margin: 50%;
-	width: 10vw;
-
-	div {
-		height: 8%;
-		padding-top: 32%;
-		position: absolute;
-		width: 100%;
-	}
-}
-
-section {
-	@include transform(translateY(-50%));
-	@include transition(top 1s ease-in);
-	position: relative;
-	height: inherit;
-	width: inherit;
-}
-
-.logo {
-	@include animation(glow 4s cubic-bezier(.45, .05, .55, .95) infinite alternate-reverse);
-	background-image: url('cpsharp.png');
-	background-size: contain;
-	cursor: pointer;
-	height: 150px;
-	left: 2vw;
-	position: absolute;
-	top: 2vw;
-	width: 150px;
-}
-
-.film-reel {
-	// @include animation(rollfilm 20s infinite);
-	// background: url('filmreel.gif') no-repeat;
-	// background-size: contain;
-	height: 18.5vh;
-	position: absolute;
-	top: 50vh;
-	width: 100%;
-
-}
-
-ul#myList {
-	background: transparent url('MoviesPics/right_reel.gif') repeat-x;
-	overflow: hidden;
-	height: inherit;
-	background-size: auto 18.5vh;
-	width: auto;
-	margin: 0;
-	list-style: none;
-	background-position-x: 36px;
-}
-
-.rolldown-list li {
-	display: inline-block;
-}
-
-.rolldown-list {
-	left: 0;
-	margin: 0;
-}
-
-.rolldown-list li {
-	text-indent: 0;
-	padding: 0;
-	margin: 0 0 0 0;
-	height: inherit;
-	list-style: none;
-	font-size: 0;
-	letter-spacing: 7.4vw;
-	background: transparent;
-}
-
-ul .rolldown-list {
-	margin: 0 -27px 0 0;
-}
-
-ul {
-	-webkit-padding-start: 0;
-}
-
-.download {
-	content: 'Download';
-	cursor: hand;
-	font-weight: bold;
-	height: 3vh;
-	letter-spacing: .2vw;
-	line-height: 2vh;
-	margin-left: 8vh;
-	width: 150px;
-
-	&:hover {
-		background: $cp_yellow;
-		border-color: $cp_yellow;
-		color: $wht;
-	}
-}
-
-.front {
-	@include translate3d(0, 0, $c-size);
-	background: $c-green;
-}
-
-.left {
-	@include transform(rotateY(-90deg) translate3d(0, 0, $c-size));
-	background: $c-purple;
-}
-
-.right {
-	@include transform(rotateY(90deg) translate3d(0, 0, $c-size));
-	background: $c-red;
-}
-
-.bottom {
-	@include transform(rotateX(-90deg) translate3d(0, 0, $c-size));
-	background: $c-lime;
-}
-
-.list_container {
-	@include opacity(0);
-	@include transition(all 1s ease-in-out);
-
-	position: absolute;
-	top: -1000px;
-	width: 100vw;
-	z-index: 100;
-}
-
-.be_seen {
-	@include opacity(1);
-
-	top: 0;
-}
-
 $row-color: rgba(66, 66, 66, .75);
-
-html {
-	height: 100%;
-	width: 100%;
-}
-
-body {
-	background: $blk;
-	color: $wht;
-	font: 2vw 'Open Sans', sans-serif;
-	height: 100vh;
-	width: 100vw;
-	overflow: hidden;
-	text-align: right;
-	margin: 0;
-}
+$gray: #808080;
 
 @include keyframes(rolldown) {
-	0% {
-		@include transform(rotateX(180deg) perspective(500px));
-		visibility: visible;
-	}
+  0% {
+    @include transform(rotateX(180deg) perspective(500px));
+    visibility: visible;
+  }
 
-	70% {
-		@include transform(rotateX(-20deg));
-		visibility: visible;
-	}
+  70% {
+    @include transform(rotateX(-20deg));
+    visibility: visible;
+  }
 
-	100% {
-		@include transform(rotateX(0deg));
-		visibility: visible;
-	}
+  100% {
+    @include transform(rotateX(0deg));
+    visibility: visible;
+  }
 }
 
 @include keyframes(rotation) {
-	0%, 10% {
-		@include transform(rotateX(0deg) rotateY(0deg))
-	}
+  0%, 10% {
+    @include transform(rotateX(0deg) rotateY(0deg))
+  }
 
-	98%, 100% {
-		@include transform(rotateX(180deg) rotateY(180deg))
-	}
+  98%, 100% {
+    @include transform(rotateX(180deg) rotateY(180deg))
+  }
 }
 
 @include keyframes(glow) {
-	0% {
-		@include opacity(.5)
-	}
+  0% {
+    @include opacity(.5)
+  }
 
-	75%, 100% {
-		@include opacity(1)
-	}
+  75%, 100% {
+    @include opacity(1)
+  }
 }
 
 @include keyframes(rollfilm) {
-	0% {
-		@include translateX(-100vw)
-	}
+  0% {
+    @include translateX(-100vw)
+  }
 
-	50% {
-		@include translateX(100vw)
-	}
+  50% {
+    @include translateX(100vw)
+  }
+}
+
+figure {
+  @include animation(rotation 5s ease-in-out infinite alternate-reverse);
+  @include inline-block;
+  @include transform(rotateX(0deg) rotateY(0deg));
+  @include transform-style(preserve-3d);
+  height: 10vw;
+  margin: 50%;
+  width: 10vw;
+
+  div {
+    height: 8%;
+    padding-top: 32%;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+section {
+  @include transform(translateY(-50%));
+  @include transition(top 1s ease-in);
+  position: relative;
+  height: inherit;
+  width: inherit;
+}
+
+ul {
+  &.rolldown-list {
+    left: 0;
+    margin: 0 -27px 0 0;
+  }
+
+  &.rolldown-list {
+    li {
+      background: transparent;
+      @include inline-block;
+      float: left;
+      font-size: 0;
+      height: inherit;
+      letter-spacing: 7.4vw;
+      list-style: none;
+      margin-right: 7px;
+      text-indent: 0;
+      width: 186px;
+    }
+
+    &#myList {
+      float: left;
+      margin-left: 45px;
+      overflow: visible;
+      padding-left: 0;
+      position: relative;
+      text-align: left;
+      width: 100%;
+    }
+  }
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: $blk;
+  color: $wht;
+  font: 2vw 'Open Sans', sans-serif;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  text-align: right;
+  margin: 0;
 }
 
 main {
-	height: 50%;
-	width: inherit;
-}
-
-main div {
-	width: 50%;
-}
-
-ul#myList {
-	background-position: bottom left;
-	border-left: gray solid 1px;
-	float: left;
-	height: 209px;
-	overflow-x: scroll;
-}
-
-.rolldown-list li {
-	margin-left: -2px;
-	padding-top: 0;
-	width: 189px;
-}
-
-.download {
-	width: 88%;
-	letter-spacing: 0;
-	margin: 0 4% 0 0;
-	border: 0;
-}
-
-.rolldown-list li {
-	float: left;
+  height: 100vh;
+  width: 100vw;
+  margin: 2.2%;
+  div {
+    width: 100vw;
+    text-align: center;
+  }
 }
 
 button.download {
-	/* margin: 0 0; */
-	text-align: center;
-	border-radius: 5px;
+  height: 5vh;
+  letter-spacing: .1vw;
+  margin-left: 0;
+  position: relative;
+  top: -4vh;
+  width: 100%;
 }
 
 aside.film-reel {
-	height: 206px;
-	width: 100%;
-	margin: 0 0 0 0;
-	padding: 5%;
+  background-image: url(MoviesPics/right_reel.gif);
+  background-position-x: 48px;
+  background-size: contain;
+  border-left: $gray solid 1px;
+  height: 178px;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 45vh;
+  width: 95%;
 }
 
-li {
-	margin-right: 5px;
+.logo {
+  @include animation(glow 4s cubic-bezier(.45, .05, .55, .95) infinite alternate-reverse);
+  background-image: url('cpsharp.png');
+  background-size: contain;
+  cursor: pointer;
+  height: 150px;
+  left: 2vw;
+  position: absolute;
+  top: 2vw;
+  width: 150px;
 }
 
-main {
-	height: 100vh;
-	width: 100vw;
+.film-reel {
+  // @include animation(rollfilm 10s infinite alternate-reverse);
+  //background-size: contain;
+  //height: 18.5vh;
+  //
 }
 
-aside.film-reel {
-	top: 170px;
-	border-left: gray solid 1px;
+.download {
+  content: 'Download';
+  cursor: hand;
+  font-weight: bold;
+  height: 3vh;
+  letter-spacing: .2vw;
+  line-height: 2vh;
+  width: 88%;
+  margin: 0 4% 0 0;
+  border: 0;
+
+  &:hover {
+    background: $cp_yellow;
+    border-color: $cp_yellow;
+    color: $wht;
+  }
+}
+
+.front {
+  @include translate3d(0, 0, $c-size);
+  background: $c-green;
+}
+
+.left {
+  @include transform(rotateY(-90deg) translate3d(0, 0, $c-size));
+  background: $c-purple;
+}
+
+.right {
+  @include transform(rotateY(90deg) translate3d(0, 0, $c-size));
+  background: $c-red;
+}
+
+.bottom {
+  @include transform(rotateX(-90deg) translate3d(0, 0, $c-size));
+  background: $c-lime;
+}
+
+.list_container {
+  @include opacity(0);
+  @include transition(all 1s ease-in-out);
+
+  position: absolute;
+  top: -1000px;
+  width: 100vw;
+  z-index: 100;
+}
+
+.be_seen {
+  @include opacity(1);
+  top: 0;
 }
